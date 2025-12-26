@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HoneyLang – Language Learning</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #fff7d6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+
+  .app {
+    width: 390px;
+    padding: 16px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #5c3b00;
+    background: linear-gradient(90deg, #FFD54F, #FFB300);
+    border-radius: 16px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  /* Header Nav Buttons */
+  .nav {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    gap: 12px;
+  }
+
+  .nav button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .nav button:hover {
+    opacity: 0.85;
+  }
+
+  .login-btn {
+    background-color: #fff3cd;
+    color: #5c3b00;
+  }
+
+  .register-btn {
+    background-color: #ffcc33;
+    color: #5c3b00;
+  }
+
+  /* Profile */
+  .profile {
+    background: #fff;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .profile div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profileTitle {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .subText {
+    color: #666;
+    margin-top: 4px;
+  }
+
+  .stats {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .stat {
+    font-weight: bold;
+  }
+
+  /* Section Title */
+  .sectionTitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+
+  /* Honeycomb grid */
+  .honeycomb {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 0;
+  }
+
+  .hex-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .hex {
+    width: 80px;
+    height: 69px;
+    background: #ffe9a8;
+    clip-path: polygon(
+      25% 0%, 75% 0%, 
+      100% 50%, 75% 100%, 
+      25% 100%, 0% 50%
+    );
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .hex:hover {
+    transform: scale(1.05);
+  }
+
+  .hex::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--fill, 0%);
+    background: linear-gradient(#ffc107, #ff9800);
+    clip-path: polygon(
+      25% 0%, 75% 0%, 
+      100% 50%, 75% 100%, 
+      25% 100%, 0% 50%
+    );
+    transition: height 0.6s;
+  }
+
+  .hex span {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #5c3b00;
+    z-index: 1;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    color: #888;
+    margin-top: 32px;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <div class="header">
+      🐝 HoneyLang
+      <div class="nav">
+        <button class="login-btn" onclick="alert('로그인 화면으로 이동')">로그인</button>
+        <button class="register-btn" onclick="alert('회원가입 화면으로 이동')">회원가입</button>
+      </div>
+    </div>
+
+    <!-- Profile -->
+    <div class="profile">
+      <div>
+        <div class="profileTitle">안녕하세요, 학습자님 👋</div>
+        <div class="subText">오늘도 스트릭을 이어가세요!</div>
+      </div>
+      <div class="stats">
+        <div class="stat">🔥 7</div>
+        <div class="stat">⭐ 1,240</div>
+        <div class="stat">❤️ 5</div>
+      </div>
+    </div>
+
+    <!-- Section Title -->
+    <div class="sectionTitle">🍯 오늘의 학습</div>
+
+    <!-- Honeycomb -->
+    <div class="honeycomb">
+      <div class="hex-row">
+        <div class="hex" style="--fill:100%"><span>1</span></div>
+        <div class="hex" style="--fill:80%"><span>2</span></div>
+        <div class="hex" style="--fill:40%"><span>3</span></div>
+      </div>
+      <div class="hex-row" style="margin-left: 46px;">
+        <div class="hex" style="--fill:0%"><span>4</span></div>
+        <div class="hex" style="--fill:0%"><span>5</span></div>
+        <div class="hex" style="--fill:0%"><span>6</span></div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      © 2025 AI Language Learning Project
+    </div>
+  </div>
+</body>
+</html>

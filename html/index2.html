@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<!-- HTML5 문서 선언 -->
+<html lang="ko">
+<!-- 문서 언어를 한국어로 설정 -->
+
+<head>
+  <!-- 문자 인코딩을 UTF-8로 설정 (한글 깨짐 방지) -->
+  <meta charset="UTF-8" />
+
+  <!-- 브라우저 탭에 표시될 제목 -->
+  <title>Honey Language</title>
+
+  <!-- 반응형 웹을 위한 viewport 설정 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    /* 모든 요소에 공통 적용 */
+    * {
+      box-sizing: border-box; /* padding, border 포함한 크기 계산 */
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, sans-serif; /* 기본 폰트 */
+    }
+
+    /* 전체 페이지 기본 스타일 */
+    body {
+      margin: 0; /* 기본 여백 제거 */
+      background: linear-gradient(#fffef8, #fff3c4); /* 꿀 느낌 배경 */
+      color: #333; /* 기본 글자 색 */
+    }
+
+    /* ================= HEADER ================= */
+    header {
+      position: relative; /* 내부 absolute 요소 기준 */
+      padding: 22px 26px 60px; /* 위/좌우/아래 여백 */
+      background: linear-gradient(135deg, #FFD54F, #FFB300); /* 헤더 꿀색 그라데이션 */
+      border-bottom-left-radius: 28px; /* 하단 왼쪽 둥글게 */
+      border-bottom-right-radius: 28px; /* 하단 오른쪽 둥글게 */
+      overflow: hidden; /* 웨이브가 넘치지 않게 */
+    }
+
+    /* 헤더 내부 정렬 */
+    .header-inner {
+      display: flex; /* 가로 정렬 */
+      justify-content: space-between; /* 양쪽 끝 배치 */
+      align-items: center; /* 세로 가운데 */
+      position: relative;
+      z-index: 2; /* 웨이브 위로 */
+    }
+
+    /* 로고 텍스트 */
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    /* 네비게이션 링크 */
+    .nav a {
+      margin-left: 18px; /* 링크 간 간격 */
+      font-weight: 700;
+      text-decoration: none; /* 밑줄 제거 */
+      color: #000;
+    }
+
+    /* 헤더 하단 웨이브 */
+    .header-wave {
+      position: absolute;
+      bottom: -20px; /* 살짝 아래로 */
+      left: 0;
+      width: 200%; /* 반복 이동용 */
+      height: 120px;
+      animation: waveMove 12s linear infinite; /* 좌우 이동 애니메이션 */
+    }
+
+    /* 웨이브 이동 애니메이션 */
+    @keyframes waveMove {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ================= CONTAINER ================= */
+    .container {
+      max-width: 1200px; /* 최대 너비 제한 */
+      margin: auto; /* 가운데 정렬 */
+      padding: 40px 24px; /* 내부 여백 */
+    }
+
+    /* ================= PROFILE ================= */
+    .profile {
+      background: #fff; /* 카드 배경 */
+      border-radius: 22px; /* 둥근 카드 */
+      padding: 22px;
+      display: flex;
+      justify-content: space-between; /* 좌우 배치 */
+      align-items: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.1); /* 카드 그림자 */
+      margin-bottom: 40px;
+    }
+
+    /* 프로필 제목 */
+    .profile h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    /* 프로필 설명 */
+    .profile p {
+      margin: 6px 0 0;
+      color: #666;
+    }
+
+    /* 스트릭, 점수 등 */
+    .stats span {
+      margin-left: 14px;
+      font-weight: 700;
+    }
+
+    /* ================= SECTION ================= */
+    .section-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin: 40px 0 20px;
+    }
+
+    /* ================= HONEYCOMB ================= */
+    .honeycomb {
+      display: flex;
+      flex-direction: column; /* 세로 정렬 */
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* 벌집 한 줄 */
+    .honey-row {
+      display: flex;
+      gap: 14px;
+    }
+
+    /* 두 번째 줄을 옆으로 밀어서 벌집 형태 */
+    .honey-row.offset {
+      margin-left: 110px;
+    }
+
+    /* ================= HEX CARD ================= */
+    .hex {
+      width: 200px;
+      height: 220px;
+      background: #fff;
+      clip-path: polygon(
+        50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%
+      ); /* 육각형 모양 */
+      position: relative;
+      box-shadow: 0 16px 34px rgba(0,0,0,0.12);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s ease;
+    }
+
+    /* 마우스 올렸을 때 살짝 상승 */
+    .hex:hover {
+      transform: translateY(-8px);
+    }
+
+    /* 육각형 안의 꿀 웨이브 */
+    .hex svg {
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 200%;
+      height: 55%;
+      opacity: 0.45;
+      animation: waveMove 9s linear infinite;
+    }
+
+    /* 육각형 내부 콘텐츠 */
+    .hex-content {
+      position: relative;
+      z-index: 2; /* 웨이브 위 */
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 16px;
+    }
+
+    /* 카드 제목 */
+    .hex h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    /* 카드 설명 */
+    .hex p {
+      margin: 6px 0 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* 버튼 스타일 */
+    .hex .btn {
+      margin-top: 12px;
+      padding: 8px 18px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #FF9800, #FFC107);
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      padding: 36px;
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ================= HEADER ================= -->
+  <header>
+    <!-- 헤더 상단 영역 -->
+    <div class="header-inner">
+      <!-- 로고 -->
+      <div class="logo">🍯 Honey Language</div>
+
+      <!-- 로그인 / 회원가입 -->
+      <nav class="nav">
+        <a href="#">로그인</a>
+        <a href="#">회원가입</a>
+      </nav>
+    </div>
+
+    <!-- 헤더 하단 웨이브 SVG -->
+    <svg class="header-wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#FFECB3"
+        d="M0,160 C120,200 240,120 360,140 480,160 600,220 720,220
+           840,220 960,160 1080,140 1200,120 1320,160 1440,180
+           L1440,320 L0,320 Z"/>
+    </svg>
+  </header>
+
+  <!-- ================= CONTENT ================= -->
+  <div class="container">
+    <!-- 사용자 프로필 카드 -->
+    <div class="profile">
+      <div>
+        <h2>안녕하세요, 학습자님 👋</h2>
+        <p>오늘도 스트릭을 이어가세요!</p>
+      </div>
+      <div class="stats">
+        <span>🔥 7</span>
+        <span>⭐ 1,240</span>
+        <span>❤️ 5</span>
+      </div>
+    </div>
+
+    <!-- 섹션 제목 -->
+    <div class="section-title">학습 중인 언어</div>
+
+    <!-- 벌집 카드 영역 -->
+    <div class="honeycomb">
+      <!-- 첫 번째 줄 -->
+      <div class="honey-row">
+        <!-- 영어 카드 -->
+        <div class="hex">
+          <svg viewBox="0 0 1440 320">
+            <path fill="#FFC107"
+              d="M0,160 C120,200 240,120 360,140 480,160 600,220 720,220 L1440,320 L0,320 Z"/>
+          </svg>
+          <div class="hex-content">
+            <h3>🇺🇸 영어</h3>
+            <p>기초 회화</p>
+            <div class="btn">계속 학습</div>
+          </div>
+        </div>
+
+        <!-- 일본어 카드 -->
+        <div class="hex">
+          <svg viewBox="0 0 1440 320">
+            <path fill="#FFD54F"
+              d="M0,180 C140,220 280,140 420,160 560,180 700,240 840,240 L1440,320 L0,320 Z"/>
+          </svg>
+          <div class="hex-content">
+            <h3>🇯🇵 일본어</h3>
+            <p>히라가나</p>
+            <div class="btn">학습 시작</div>
+          </div>
+        </div>
+
+        <!-- 스페인어 카드 -->
+        <div class="hex">
+          <svg viewBox="0 0 1440 320">
+            <path fill="#FFB300"
+              d="M0,200 C160,240 320,160 480,180 640,200 800,260 960,260 L1440,320 L0,320 Z"/>
+          </svg>
+          <div class="hex-content">
+            <h3>🇪🇸 스페인어</h3>
+            <p>발음</p>
+            <div class="btn">학습 시작</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 두 번째 줄 -->
+      <div class="honey-row offset">
+        <div class="hex">
+          <div class="hex-content">
+            <h3>📘 레슨</h3>
+            <p>단계별 학습</p>
+          </div>
+        </div>
+
+        <div class="hex">
+          <div class="hex-content">
+            <h3>🤖 AI 회화</h3>
+            <p>실전 대화</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 푸터 -->
+  <footer>
+    © 2025 Honey Language Learning Project
+  </footer>
+</body>
+</html>

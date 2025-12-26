@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f6f7fb;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #FFD54F, #FFB300);
+  padding: 20px;
+  border-radius: 0 0 24px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav a {
+  margin-left: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+}
+
+.logo {
+  font-size: 22px;
+}
+
+/* CONTENT */
+.content {
+  padding: 24px;
+}
+
+.profile {
+  background: white;
+  padding: 22px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 26px;
+  box-shadow: 0 6px 12px rgba(0,0,0,.1);
+}
+
+.stats span {
+  margin-left: 16px;
+  font-weight: bold;
+}
+
+/* GRID */
+.section-title {
+  font-size: 20px;
+  margin: 24px 0 14px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.card {
+  width: 48%;
+  background: white;
+  padding: 22px;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0,0,0,.12);
+  transition: transform .15s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* BUTTONS */
+.btn {
+  margin-top: 14px;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.dark { background: linear-gradient(135deg, #111, #333); }
+.blue { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+.pink { background: linear-gradient(135deg, #fa709a, #fee140); }
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 24px;
+  color: #888;
+}
+
+/* SPLASH */
+#splash-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.splash {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: gold;
+  border-radius: 50%;
+  animation: splash 700ms ease-out forwards;
+}
+
+@keyframes splash {
+  from { transform: scale(1); opacity: 1; }
+  to   { transform: scale(2.5); opacity: 0; }
+}
+
+/* ANIMATION */
+.fade-up {
+  animation: fadeUp .6s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
